@@ -1,0 +1,27 @@
+<div fxLayout="row" fxFlex="100">
+    <form [formGroup]="empForm" fxFlex="100" class="p20">
+        <div fxFlex="100" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="10px">
+            <mat-form-field>
+                <input matInput formControlName="firstName" placeholder="First Name" maxlength="50">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="lastName" placeholder="Last Name" maxlength="50">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="dob" type="date" max="9999-12-31" placeholder="Date Of Birth">
+            </mat-form-field>
+            <mat-radio-group aria-label="Gender" formControlName="gender">
+                <mat-radio-button value="Male">Male</mat-radio-button>
+                <mat-radio-button value="Female">Female</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field>
+                <mat-select placeholder="Department" formControlName="department">
+                    <mat-option *ngFor="let dept of deptList" [value]="dept">
+                        {{dept}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-button color="primary" (click)="addEmployee()" [disabled]="empForm.invalid">Sumbit</button>
+        </div>
+    </form>
+</div>
